@@ -52,8 +52,8 @@ if (mobileDebug || 'ontouchstart' in window || navigator.maxTouchPoints > 0) {
 
 // Can't decide on an appropriate image to set as the background of the site, so creating logic to randomly select an image daily
 const imageLinks = [ // TODO: Get images
-    'assets/backgrounds/cat.jpg',
-    //'' // blank image to just show fallback colour (#89cff0)
+    //'assets/backgrounds/cat.jpg',
+    '' // blank image to just show fallback colour (#89cff0)
 ]
 
 // probably the most inefficient shitcode ever but tests were random enough for me :shrug:
