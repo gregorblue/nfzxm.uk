@@ -1,7 +1,6 @@
 const searchParamStr = new URLSearchParams(window.location.search);
 
-// We're on the homepage, so this isn't needed and would just clear any url params if it was used :shrug:
-//document.querySelector('#header .brand').addEventListener('click', (e) => window.open('/', '_self'));
+document.querySelector('#header .brand').addEventListener('click', (e) => window.open('/', '_self'));
 
 // Adding margins to first and last elements instead of a margin on the parent to keep the scrollbar the entire width
 const links = document.querySelector('.linksWrapper .links')
