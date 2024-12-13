@@ -12,6 +12,10 @@ if (links) {
 // Disable content scrolling logic for debug, not many use cases but good to have ig
 const mobileDebug = false;
 
+const scrollElementOverrides = {
+    1: document.querySelector('#content .portfolio .portfolioContent')
+}
+
 const contentWrapper = document.querySelector('#content');
 if (mobileDebug || 'ontouchstart' in window || navigator.maxTouchPoints > 0) {
     contentWrapper.style.overflow = 'auto';
@@ -27,12 +31,12 @@ if (mobileDebug || 'ontouchstart' in window || navigator.maxTouchPoints > 0) {
         const nextContentIndex = e.deltaY > 0 ? currentContentIndex + 1 : currentContentIndex - 1;
         const nextContent = contentWrapper.children[nextContentIndex];
         if (nextContent) {
-            const currentContent = contentWrapper.children[currentContentIndex];
-            if (currentContent.scrollHeight > currentContent.clientHeight) {
+            const scrollContent = scrollElementOverrides[currentContentIndex] || contentWrapper.children[currentContentIndex];
+            if (scrollContent.scrollHeight > scrollContent.clientHeight) {
                 if (e.deltaY > 0) {
-                    if (currentContent.scrollHeight - currentContent.scrollTop > currentContent.clientHeight) return;
+                    if (scrollContent.scrollHeight - scrollContent.scrollTop > scrollContent.clientHeight) return;
                 } else {
-                    if (currentContent.scrollTop > 0) return;
+                    if (scrollContent.scrollTop > 0) return;
                 }
             }
             nextContent.scrollIntoView({behavior: 'smooth', block: 'start'});
